@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | Regex Consultancy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="footer.js" defer></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { mono: { pitch: '#000000', stark: '#ffffff', lightGray: '#f4f4f5', border: '#e4e4e7' } } } } }
+        document.addEventListener('DOMContentLoaded', () => { if (sessionStorage.getItem('regulatoryDisclaimerAccepted') !== 'true') window.location.href = 'index.html'; });
+    </script>
+</head>
+<body class="bg-mono-stark text-mono-pitch font-sans antialiased">
+    <nav class="bg-mono-pitch text-mono-stark border-b border-mono-darkGray sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8"><div class="flex items-center justify-between h-20"><a href="index.html" class="font-black text-xl tracking-tighter uppercase">Regex Consultancy</a><div class="flex space-x-8 font-medium text-xs uppercase tracking-widest"><a href="practice-areas.html" class="text-slate-400 hover:text-mono-stark">Practice Areas</a><a href="team.html" class="text-slate-400 hover:text-mono-stark">Our Team</a><a href="insights.html" class="text-slate-400 hover:text-mono-stark">Regulatory Insights</a><a href="careers.html" class="text-mono-stark border-b border-mono-stark pb-1">Careers</a><a href="contact.html" class="text-slate-400 hover:text-mono-stark">Contact</a></div></div></div>
+    </nav>
+    <main class="py-32 max-w-4xl mx-auto px-6 text-center min-h-[65vh] flex flex-col justify-center items-center">
+        <div class="font-mono text-xs text-slate-400 uppercase tracking-widest mb-4">[ Joining the Practice ]</div>
+        <h1 class="text-4xl font-light uppercase tracking-tight mb-6">Current Availability</h1>
+        <div class="max-w-xl border border-mono-border p-8 bg-mono-lightGray text-sm text-slate-700 leading-relaxed">
+            <p class="mb-4 font-semibold text-mono-pitch">We are currently not hiring for active roles within our compliance units.</p>
+            <p>However, our practice is always looking to connect with exceptional regulatory specialists, data compliance engineers, and capital markets scholars. Feel free to forward your curriculum vitae and qualifications track record to us at:</p>
+            <p class="mt-4 font-mono font-bold text-base text-mono-pitch underline"><a href="mailto:regex@regexconsultancy.com">regex@regexconsultancy.com</a></p>
+        </div>
+    </main>
+    <footer id="shared-footer" class="bg-mono-pitch text-slate-400 py-12 border-t border-mono-darkGray text-xs font-mono"></footer>
+</body>
+</html>
