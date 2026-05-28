@@ -3,33 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regex Consultancy | Capital Markets & SEBI Regulatory Advisory</title>
+    <title>Regex Consultancy | Capital Markets Regulatory Advisory</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="footer.js" defer></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        mono: {
-                            pitch: '#000000',
-                            stark: '#ffffff',
-                            darkGray: '#121212',
-                            lightGray: '#f4f4f5',
-                            border: '#e4e4e7'
-                        }
-                    }
-                }
-            }
-        }
+        tailwind.config = { theme: { extend: { colors: { mono: { pitch: '#000000', stark: '#ffffff', darkGray: '#121212', lightGray: '#f4f4f5', border: '#e4e4e7' } } } } }
 
-        // Robust Core Event Handlers for Disclaimer Gateway
         document.addEventListener('DOMContentLoaded', () => {
             const modal = document.getElementById('disclaimer-modal');
             const agreeBtn = document.getElementById('agree-btn');
             const exitBtn = document.getElementById('exit-btn');
 
+            if (sessionStorage.getItem('regulatoryDisclaimerAccepted') === 'true') {
+                if (modal) modal.style.display = 'none';
+                document.body.classList.remove('modal-open');
+            }
+
             if (agreeBtn && modal) {
                 agreeBtn.addEventListener('click', () => {
+                    sessionStorage.setItem('regulatoryDisclaimerAccepted', 'true');
                     modal.style.display = 'none';
                     document.body.classList.remove('modal-open');
                 });
@@ -42,34 +34,21 @@
             }
         });
     </script>
-    <style>
-        /* Locks the scrolling behind the disclaimer overlay on initial entry */
-        body.modal-open {
-            overflow: hidden;
-        }
-    </style>
+    <style> body.modal-open { overflow: hidden; } </style>
 </head>
 <body class="bg-mono-stark text-mono-pitch font-sans antialiased modal-open">
 
     <div id="disclaimer-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-mono-pitch/95 p-4 backdrop-blur-sm">
-        <div class="bg-mono-stark text-mono-pitch max-w-2xl w-full p-8 sm:p-12 rounded-none border border-mono-pitch shadow-2xl">
+        <div class="bg-mono-stark text-mono-pitch max-w-2xl w-full p-8 sm:p-12 border border-mono-pitch shadow-2xl">
             <div class="font-mono text-xs uppercase tracking-widest text-slate-500 mb-3">Regulatory Notice & Disclaimer</div>
             <h2 class="text-2xl font-bold tracking-tight mb-4">Acknowledge Terms of Access</h2>
             <div class="text-sm text-slate-600 space-y-4 leading-relaxed mb-8">
-                <p>
-                    In accordance with the guidelines issued by the Securities and Exchange Board of India (SEBI) and prevailing professional standards for capital market consultants, the content of this website is intended solely to provide general information regarding the practice areas and collective capabilities of Regex Consultancy.
-                </p>
-                <p>
-                    By clicking <strong>"I Agree & Enter"</strong>, you acknowledge and confirm that you are seeking information about our services voluntarily and that no solicitation, advertisement, or inducement of any kind has been made by the firm or its team members.
-                </p>
+                <p>In accordance with prevailing professional standards for capital market consultants, the content of this website is intended solely to provide general information regarding the practice areas and collective capabilities of Regex Consultancy.</p>
+                <p>By clicking <strong>"I Agree & Enter"</strong>, you acknowledge and confirm that you are seeking information about our advisory services voluntarily and that no solicitation, advertisement, or inducement of any kind has been made by the firm or its team members.</p>
             </div>
             <div class="flex flex-col sm:flex-row gap-4">
-                <button id="agree-btn" class="flex-1 bg-mono-pitch hover:bg-mono-darkGray text-mono-stark font-semibold py-3 px-6 transition-colors text-sm uppercase tracking-wider">
-                    I Agree & Enter
-                </button>
-                <button id="exit-btn" class="flex-1 bg-transparent border border-mono-pitch hover:bg-mono-lightGray text-mono-pitch font-semibold py-3 px-6 transition-colors text-sm uppercase tracking-wider">
-                    Exit
-                </button>
+                <button id="agree-btn" class="flex-1 bg-mono-pitch hover:bg-mono-darkGray text-mono-stark font-semibold py-3 px-6 text-sm uppercase tracking-wider">I Agree & Enter</button>
+                <button id="exit-btn" class="flex-1 bg-transparent border border-mono-pitch hover:bg-mono-lightGray text-mono-pitch font-semibold py-3 px-6 text-sm uppercase tracking-wider">Exit</button>
             </div>
         </div>
     </div>
@@ -77,174 +56,32 @@
     <nav class="bg-mono-pitch text-mono-stark border-b border-mono-darkGray sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <div class="flex items-center space-x-3">
-                    <span class="font-black text-xl tracking-tighter uppercase">Regex Consultancy</span>
-                </div>
+                <a href="index.html" class="font-black text-xl tracking-tighter uppercase">Regex Consultancy</a>
                 <div class="hidden md:flex space-x-8 font-medium text-xs uppercase tracking-widest">
-                    <a href="#expertise" class="text-slate-400 hover:text-mono-stark transition-colors">Practice Areas</a>
-                    <a href="#team" class="text-slate-400 hover:text-mono-stark transition-colors">Our Team</a>
-                    <a href="#contact" class="bg-mono-stark text-mono-pitch px-4 py-2 hover:bg-mono-lightGray transition-colors">Contact</a>
+                    <a href="practice-areas.html" class="text-slate-400 hover:text-mono-stark transition-colors">Practice Areas</a>
+                    <a href="team.html" class="text-slate-400 hover:text-mono-stark transition-colors">Our Team</a>
+                    <a href="insights.html" class="text-slate-400 hover:text-mono-stark transition-colors">Regulatory Insights</a>
+                    <a href="careers.html" class="text-slate-400 hover:text-mono-stark transition-colors">Careers</a>
+                    <a href="contact.html" class="bg-mono-stark text-mono-pitch px-4 py-2 hover:bg-mono-lightGray transition-colors">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <header class="bg-mono-pitch text-mono-stark py-28 border-b border-mono-darkGray">
+    <header class="bg-mono-pitch text-mono-stark py-32 border-b border-mono-darkGray">
         <div class="max-w-5xl mx-auto px-6">
-            <div class="inline-block border border-slate-700 text-slate-400 text-xs tracking-widest uppercase px-3 py-1 mb-6">
-                SEBI Regulatory Compliance Desk
-            </div>
-            <h1 class="text-4xl sm:text-6xl font-light tracking-tight leading-tight mb-8">
-                Precision Advisory for <br><span class="font-bold">Indian Capital Markets</span>
-            </h1>
-            <p class="text-lg text-slate-400 max-w-3xl leading-relaxed mb-12">
-                We navigate complex regulatory architectures to help market intermediaries, brokerages, and investment managers secure frameworks, execute audits, and maintain structural compliance.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <a href="#contact" class="bg-mono-stark text-mono-pitch font-bold px-8 py-4 text-xs uppercase tracking-widest text-center hover:bg-mono-lightGray transition-all">
-                    Initiate Engagement
-                </a>
-                <a href="#expertise" class="border border-slate-700 text-mono-stark font-bold px-8 py-4 text-xs uppercase tracking-widest text-center hover:bg-mono-darkGray transition-all">
-                    Explore Frameworks
-                </a>
-            </div>
+            <div class="inline-block border border-slate-700 text-slate-400 text-xs tracking-widest uppercase px-3 py-1 mb-6">Capital Markets Compliance Desk</div>
+            <h1 class="text-4xl sm:text-6xl font-light tracking-tight leading-tight mb-8">Precision Advisory for <br><span class="font-bold">Institutional Systems</span></h1>
+            <p class="text-lg text-slate-400 max-w-3xl leading-relaxed mb-12">We design operational architectures to help market intermediaries, fund managers, and investment brokerages protect structures, execute internal audits, and master dynamic filing updates.</p>
+            <a href="contact.html" class="bg-mono-stark text-mono-pitch font-bold px-8 py-4 text-xs uppercase tracking-widest hover:bg-mono-lightGray transition-all">Initiate Engagement</a>
         </div>
     </header>
 
-    <section id="expertise" class="py-24 max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="border-l-2 border-mono-pitch pl-6 mb-16">
-            <h2 class="text-3xl font-bold tracking-tight uppercase">Core Practice Areas</h2>
-            <p class="mt-2 text-slate-500 text-sm max-w-xl">Comprehensive architectural support for market intermediaries and asset management entities.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            <div class="border border-mono-border p-8 bg-mono-stark flex flex-col justify-between hover:border-mono-pitch transition-colors">
-                <div>
-                    <div class="font-mono text-xs text-slate-400 mb-6">[01 / REGISTRATION]</div>
-                    <h3 class="text-xl font-bold mb-3 uppercase tracking-tight">PMS & AIF Setup</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        End-to-end institutional structural advisory for establishing Portfolio Management Services (PMS) and Alternative Investment Funds (AIF Cat I, II & III).
-                    </p>
-                </div>
-            </div>
-
-            <div class="border border-mono-border p-8 bg-mono-stark flex flex-col justify-between hover:border-mono-pitch transition-colors">
-                <div>
-                    <div class="font-mono text-xs text-slate-400 mb-6">[02 / ADVISORY]</div>
-                    <h3 class="text-xl font-bold mb-3 uppercase tracking-tight">Intermediary Licensing</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Structuring and processing validation applications for Investment Advisers (IA), Research Analysts (RA), and corporate asset entities.
-                    </p>
-                </div>
-            </div>
-
-            <div class="border border-mono-border p-8 bg-mono-stark flex flex-col justify-between hover:border-mono-pitch transition-colors">
-                <div>
-                    <div class="font-mono text-xs text-slate-400 mb-6">[03 / AUDIT]</div>
-                    <h3 class="text-xl font-bold mb-3 uppercase tracking-tight">Broker & Entity Compliance</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">
-                        Periodic regulatory operations oversight, mock SEBI audits, regulatory response drafting, and compliance systems for Stock Brokers.
-                    </p>
-                </div>
-            </div>
-        </div>
+    <section class="py-24 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+        <p class="text-2xl sm:text-3xl font-light max-w-4xl mx-auto leading-relaxed">Delivering zero-ambiguity structural consulting for asset managers, registered corporate entities, and financial market infrastructure operations.</p>
     </section>
 
-    <section id="team" class="bg-mono-lightGray py-24 border-t border-b border-mono-border">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                <div class="lg:col-span-4">
-                    <div class="font-mono text-xs text-slate-500 uppercase tracking-widest mb-2">[ Operational Track Record ]</div>
-                    <h2 class="text-3xl font-bold uppercase tracking-tight">Team Expertise</h2>
-                </div>
-                <div class="lg:col-span-8 text-base text-slate-700 space-y-6 leading-relaxed">
-                    <p>
-                        Our team brings profound technical and operational expertise inside the Indian capital markets framework, offering specialized experience interacting with structural <strong>regulatory bodies and market regulators</strong>.
-                    </p>
-                    <p>
-                        We have successfully navigated the entire lifecycle of fund structuring—from incubating and <strong>establishing PMS/AIF companies</strong> to engineering strict internal compliance desks for premier asset managers.
-                    </p>
-                    <p>
-                        Whether handling the granular periodic obligations of a high-volume <strong>Stock Broker</strong>, advising licensed <strong>Investment Advisers (IA) / Research Analysts (RA)</strong>, or designing operations models for complex investment setups, our team executes with absolute alignment to statutory circulars.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24 max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            
-            <div class="lg:col-span-4 space-y-12">
-                <div>
-                    <h2 class="text-2xl font-bold uppercase tracking-tight mb-2">Our Footprint</h2>
-                    <p class="text-sm text-slate-500">Institutional support across India's primary financial and corporate hubs.</p>
-                </div>
-                
-                <div class="space-y-8 border-l border-mono-pitch pl-6">
-                    <div>
-                        <h3 class="text-xs font-mono uppercase tracking-widest text-slate-500 mb-1">Primary Desk</h3>
-                        <p class="text-lg font-bold">Mumbai</p>
-                        <p class="text-xs text-slate-400 uppercase mt-1">Maharashtra, India</p>
-                    </div>
-                    <div>
-                        <h3 class="text-xs font-mono uppercase tracking-widest text-slate-500 mb-1">Regional Desk</h3>
-                        <p class="text-lg font-bold">Ahmedabad</p>
-                        <p class="text-xs text-slate-400 uppercase mt-1">Gujarat, India</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lg:col-span-8 bg-mono-stark border border-mono-pitch p-8 sm:p-12 shadow-sm">
-                <h3 class="text-xl font-bold uppercase mb-2">Corporate Intake</h3>
-                <p class="text-sm text-slate-500 mb-8">Please provide formal institutional parameters below to initiate conflict checks.</p>
-                
-                <form action="#" method="POST" class="space-y-6">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                            <label for="name" class="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-2">Entity Name / Contact</label>
-                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-mono-border rounded-none focus:outline-none focus:border-mono-pitch transition-all text-sm">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-2">Corporate Email</label>
-                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-mono-border rounded-none focus:outline-none focus:border-mono-pitch transition-all text-sm">
-                        </div>
-                    </div>
-                    <div>
-                        <label for="scope" class="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-2">Operational Classification</label>
-                        <select id="scope" name="scope" class="w-full px-4 py-3 border border-mono-border rounded-none bg-mono-stark focus:outline-none focus:border-mono-pitch transition-all text-sm text-slate-600">
-                            <option>PMS / AIF Structural Setup</option>
-                            <option>Stock Broker Compliance Management</option>
-                            <option>IA / RA Licensing Frameworks</option>
-                            <option>General Capital Markets Advisory</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="message" class="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-2">Inquiry Specifics</label>
-                        <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border border-mono-border rounded-none focus:outline-none focus:border-mono-pitch transition-all text-sm placeholder-slate-300" placeholder="Please cite specific SEBI regulations or project objectives..."></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-mono-pitch hover:bg-mono-darkGray text-mono-stark font-bold py-4 px-6 text-xs uppercase tracking-widest transition-colors">
-                        Submit Brief
-                    </button>
-                </form>
-            </div>
-
-        </div>
-    </section>
-
-    <footer class="bg-mono-pitch text-slate-400 py-12 border-t border-mono-darkGray text-xs font-mono">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div>
-                <p>&copy; 2026 Regex Consultancy. Capital Markets Regulatory Advisory.</p>
-                <p class="text-slate-600 text-[10px] mt-1">Disclaimer: Content is strictly informational and must not be interpreted as actionable legal or regulatory declarations.</p>
-            </div>
-            
-            <div class="flex space-x-6 text-xs uppercase tracking-wider font-bold">
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-mono-stark hover:text-slate-400 transition-colors">LinkedIn</a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-mono-stark hover:text-slate-400 transition-colors">Twitter</a>
-            </div>
-        </div>
-    </footer>
+    <footer id="shared-footer" class="bg-mono-pitch text-slate-400 py-12 border-t border-mono-darkGray text-xs font-mono"></footer>
 
 </body>
 </html>
