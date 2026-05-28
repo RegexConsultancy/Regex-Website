@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="text-slate-600 text-[10px] mt-1">Disclaimer: Content is strictly informational and must not be interpreted as actionable legal or regulatory declarations.</p>
                 </div>
                 <div class="flex space-x-6 text-xs uppercase tracking-wider font-bold">
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-mono-stark hover:text-slate-400 transition-colors">LinkedIn</a>
-                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-mono-stark hover:text-slate-400 transition-colors">Twitter</a>
+                    <a href="https://www.linkedin.com/company/regex-consultancy-com/" target="_blank" rel="noopener noreferrer" class="text-mono-stark hover:text-slate-400 transition-colors">LinkedIn</a>
+                    <a href="https://x.com/regex_consult" target="_blank" rel="noopener noreferrer" class="text-mono-stark hover:text-slate-400 transition-colors">X / Twitter</a>
                     <a href="mailto:regex@regexconsultancy.com" class="text-mono-stark hover:text-slate-400 transition-colors">Email</a>
                 </div>
             </div>
