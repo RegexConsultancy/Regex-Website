@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regulatory Insights | Regex Consultancy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="footer.js" defer></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { mono: { pitch: '#000000', stark: '#ffffff', lightGray: '#f4f4f5', border: '#e4e4e7' } } } } }
+        document.addEventListener('DOMContentLoaded', () => { if (sessionStorage.getItem('regulatoryDisclaimerAccepted') !== 'true') window.location.href = 'index.html'; });
+    </script>
+</head>
+<body class="bg-mono-stark text-mono-pitch font-sans antialiased">
+    <nav class="bg-mono-pitch text-mono-stark border-b border-mono-darkGray sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8"><div class="flex items-center justify-between h-20"><a href="index.html" class="font-black text-xl tracking-tighter uppercase">Regex Consultancy</a><div class="flex space-x-8 font-medium text-xs uppercase tracking-widest"><a href="practice-areas.html" class="text-slate-400 hover:text-mono-stark">Practice Areas</a><a href="team.html" class="text-slate-400 hover:text-mono-stark">Our Team</a><a href="insights.html" class="text-mono-stark border-b border-mono-stark pb-1">Regulatory Insights</a><a href="careers.html" class="text-slate-400 hover:text-mono-stark">Careers</a><a href="contact.html" class="text-slate-400 hover:text-mono-stark">Contact</a></div></div></div>
+    </nav>
+    <main class="py-24 max-w-4xl mx-auto px-6 min-h-[65vh]">
+        <div class="border-l-2 border-mono-pitch pl-6 mb-16"><h1 class="text-4xl font-bold uppercase tracking-tight">Regulatory Insights</h1></div>
+        <div class="space-y-12 divide-y divide-mono-border">
+            <div class="pt-2"><span class="font-mono text-xs text-slate-400 block mb-2">May 2026</span><h2 class="text-xl font-bold uppercase mb-2">Analyzing Framework Modifications for Alternative Funds</h2><p class="text-sm text-slate-600 leading-relaxed">An interpretive analysis outlining changes in valuation methodologies and reporting frequency parameters for Cat II and Cat III private market investment vehicles...</p></div>
+            <div class="pt-8"><span class="font-mono text-xs text-slate-400 block mb-2">April 2026</span><h2 class="text-xl font-bold uppercase mb-2">Operational Controls Checklist for Corporate Brokerages</h2><p class="text-sm text-slate-600 leading-relaxed">A strategic breakdown of core risk control protocols, multi-channel data handling mandates, and internal inspection priorities ahead of upcoming institutional reviews...</p></div>
+        </div>
+    </main>
+    <footer id="shared-footer" class="bg-mono-pitch text-slate-400 py-12 border-t border-mono-darkGray text-xs font-mono"></footer>
+</body>
+</html>
