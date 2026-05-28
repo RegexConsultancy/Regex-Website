@@ -1,0 +1,18 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const footerElement = document.getElementById('shared-footer');
+    if (footerElement) {
+        footerElement.innerHTML = `
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <p>&copy; 2026 Regex Consultancy. Capital Markets Regulatory Advisory.</p>
+                    <p class="text-slate-600 text-[10px] mt-1">Disclaimer: Content is strictly informational and must not be interpreted as actionable legal or regulatory declarations.</p>
+                </div>
+                <div class="flex space-x-6 text-xs uppercase tracking-wider font-bold">
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-mono-stark hover:text-slate-400 transition-colors">LinkedIn</a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-mono-stark hover:text-slate-400 transition-colors">Twitter</a>
+                    <a href="mailto:regex@regexconsultancy.com" class="text-mono-stark hover:text-slate-400 transition-colors">Email</a>
+                </div>
+            </div>
+        `;
+    }
+});
