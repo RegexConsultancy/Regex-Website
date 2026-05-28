@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | Regex Consultancy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="footer.js" defer></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { mono: { pitch: '#000000', stark: '#ffffff', lightGray: '#f4f4f5', border: '#e4e4e7' } } } } }
+        document.addEventListener('DOMContentLoaded', () => { if (sessionStorage.getItem('regulatoryDisclaimerAccepted') !== 'true') window.location.href = 'index.html'; });
+    </script>
+</head>
+<body class="bg-mono-stark text-mono-pitch font-sans antialiased">
+    <nav class="bg-mono-pitch text-mono-stark border-b border-mono-darkGray sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8"><div class="flex items-center justify-between h-20"><a href="index.html" class="font-black text-xl tracking-tighter uppercase">Regex Consultancy</a><div class="flex space-x-8 font-medium text-xs uppercase tracking-widest"><a href="practice-areas.html" class="text-slate-400 hover:text-mono-stark">Practice Areas</a><a href="team.html" class="text-mono-stark border-b border-mono-stark pb-1">Our Team</a><a href="insights.html" class="text-slate-400 hover:text-mono-stark">Regulatory Insights</a><a href="careers.html" class="text-slate-400 hover:text-mono-stark">Careers</a><a href="contact.html" class="text-slate-400 hover:text-mono-stark">Contact</a></div></div></div>
+    </nav>
+    <main class="py-24 max-w-4xl mx-auto px-6 min-h-[65vh]">
+        <div class="border-l-2 border-mono-pitch pl-6 mb-12"><h1 class="text-4xl font-bold uppercase tracking-tight">Our Track Record</h1></div>
+        <div class="text-base text-slate-700 space-y-6 leading-relaxed">
+            <p>Our team brings profound technical and operational expertise inside the Indian capital markets framework, offering specialized experience interacting with structural <strong>regulatory bodies and market regulators</strong>.</p>
+            <p>We have successfully navigated the entire lifecycle of fund structuring—from incubating and <strong>establishing PMS/AIF companies</strong> to engineering strict internal compliance desks for premier asset managers.</p>
+            <p>Whether handling the granular periodic obligations of a high-volume <strong>Stock Broker</strong>, advising licensed <strong>Investment Advisers (IA) / Research Analysts (RA)</strong>, or designing operations models for complex investment setups, our team executes with absolute alignment to statutory circulars.</p>
+        </div>
+    </main>
+    <footer id="shared-footer" class="bg-mono-pitch text-slate-400 py-12 border-t border-mono-darkGray text-xs font-mono"></footer>
+</body>
+</html>
