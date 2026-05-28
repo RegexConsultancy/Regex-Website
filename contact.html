@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Regex Consultancy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="footer.js" defer></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { mono: { pitch: '#000000', stark: '#ffffff', lightGray: '#f4f4f5', border: '#e4e4e7' } } } } }
+        document.addEventListener('DOMContentLoaded', () => { if (sessionStorage.getItem('regulatoryDisclaimerAccepted') !== 'true') window.location.href = 'index.html'; });
+    </script>
+</head>
+<body class="bg-mono-stark text-mono-pitch font-sans antialiased">
+    <nav class="bg-mono-pitch text-mono-stark border-b border-mono-darkGray sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8"><div class="flex items-center justify-between h-20"><a href="index.html" class="font-black text-xl tracking-tighter uppercase">Regex Consultancy</a><div class="flex space-x-8 font-medium text-xs uppercase tracking-widest"><a href="practice-areas.html" class="text-slate-400 hover:text-mono-stark">Practice Areas</a><a href="team.html" class="text-slate-400 hover:text-mono-stark">Our Team</a><a href="insights.html" class="text-slate-400 hover:text-mono-stark">Regulatory Insights</a><a href="careers.html" class="text-slate-400 hover:text-mono-stark">Careers</a><a href="contact.html" class="text-mono-stark border-b border-mono-stark pb-1">Contact</a></div></div></div>
+    </nav>
+    <main class="py-24 max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div class="lg:col-span-4 space-y-12">
+                <div><h1 class="text-3xl font-bold uppercase tracking-tight mb-2">Our Footprint</h1><p class="text-sm text-slate-500">Institutional desks placed inside primary financial corridors.</p></div>
+                <div class="space-y-8 border-l border-mono-pitch pl-6">
+                    <div><h3 class="text-xs font-mono uppercase tracking-widest text-slate-400 mb-1">Primary Desk</h3><p class="text-lg font-bold">Mumbai</p><p class="text-xs text-slate-400 uppercase mt-1">Maharashtra, India</p></div>
+                    <div><h3 class="text-xs font-mono uppercase tracking-widest text-slate-400 mb-1">Regional Desk</h3><p class="text-lg font-bold">Ahmedabad</p><p class="text-xs text-slate-400 uppercase mt-1">Gujarat, India</p></div>
+                </div>
+            </div>
+            <div class="lg:col-span-8 border border-mono-pitch p-8 sm:p-12">
+                <h2 class="text-xl font-bold uppercase mb-2">Corporate Intake Form</h2>
+                <p class="text-sm text-slate-500 mb-8">Please provide your corporate entity details to clear client conflict assessments.</p>
+                <form action="#" method="POST" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div><label class="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-2">Entity Name</label><input type="text" required class="w-full px-4 py-3 border border-mono-border rounded-none focus:outline-none focus:border-mono-pitch text-sm"></div>
+                        <div><label class="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-2">Corporate Email</label><input type="email" required class="w-full px-4 py-3 border border-mono-border rounded-none focus:outline-none focus:border-mono-pitch text-sm"></div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-2">Operational Classification</label>
+                        <select class="w-full px-4 py-3 border border-mono-border rounded-none bg-mono-stark text-sm text-slate-600 focus:outline-none focus:border-mono-pitch">
+                            <option>PMS / AIF Structural Setup</option><option>Stock Broker Compliance Management</option><option>IA / RA Licensing Frameworks</option><option>General Capital Markets Advisory</option>
+                        </select>
+                    </div>
+                    <div><label class="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-2">Inquiry Specifics</label><textarea rows="4" required class="w-full px-4 py-3 border border-mono-border rounded-none focus:outline-none focus:border-mono-pitch text-sm placeholder-slate-300" placeholder="Cite specific rules or objectives..."></textarea></div>
+                    <button type="submit" class="w-full bg-mono-pitch hover:bg-mono-darkGray text-mono-stark font-bold py-4 text-xs uppercase tracking-widest transition-colors">Submit Brief</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer id="shared-footer" class="bg-mono-pitch text-slate-400 py-12 border-t border-mono-darkGray text-xs font-mono"></footer>
+</body>
+</html>
