@@ -21,9 +21,29 @@
                 }
             }
         }
+
+        // Robust Core Event Handlers for Disclaimer Gateway
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('disclaimer-modal');
+            const agreeBtn = document.getElementById('agree-btn');
+            const exitBtn = document.getElementById('exit-btn');
+
+            if (agreeBtn && modal) {
+                agreeBtn.addEventListener('click', () => {
+                    modal.style.display = 'none';
+                    document.body.classList.remove('modal-open');
+                });
+            }
+
+            if (exitBtn) {
+                exitBtn.addEventListener('click', () => {
+                    window.location.href = 'https://www.google.co.in';
+                });
+            }
+        });
     </script>
     <style>
-        /* Smooth locking for disclaimer modal */
+        /* Locks the scrolling behind the disclaimer overlay on initial entry */
         body.modal-open {
             overflow: hidden;
         }
@@ -44,10 +64,10 @@
                 </p>
             </div>
             <div class="flex flex-col sm:flex-row gap-4">
-                <button onclick="acceptDisclaimer()" class="flex-1 bg-mono-pitch hover:bg-mono-darkGray text-mono-stark font-semibold py-3 px-6 transition-colors text-sm uppercase tracking-wider">
+                <button id="agree-btn" class="flex-1 bg-mono-pitch hover:bg-mono-darkGray text-mono-stark font-semibold py-3 px-6 transition-colors text-sm uppercase tracking-wider">
                     I Agree & Enter
                 </button>
-                <button onclick="rejectDisclaimer()" class="flex-1 bg-transparent border border-mono-pitch hover:bg-mono-lightGray text-mono-pitch font-semibold py-3 px-6 transition-colors text-sm uppercase tracking-wider">
+                <button id="exit-btn" class="flex-1 bg-transparent border border-mono-pitch hover:bg-mono-lightGray text-mono-pitch font-semibold py-3 px-6 transition-colors text-sm uppercase tracking-wider">
                     Exit
                 </button>
             </div>
@@ -113,7 +133,7 @@
                     <div class="font-mono text-xs text-slate-400 mb-6">[02 / ADVISORY]</div>
                     <h3 class="text-xl font-bold mb-3 uppercase tracking-tight">Intermediary Licensing</h3>
                     <p class="text-slate-600 text-sm leading-relaxed">
-                        Structuring and processing validation applications for Investment Advisers (IA), Research Analysts (RA), and corporate entities.
+                        Structuring and processing validation applications for Investment Advisers (IA), Research Analysts (RA), and corporate asset entities.
                     </p>
                 </div>
             </div>
@@ -134,7 +154,7 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
                 <div class="lg:col-span-4">
-                    <div font-mono text-xs class="text-slate-500 uppercase tracking-widest mb-2">[ Operational Track Record ]</div>
+                    <div class="font-mono text-xs text-slate-500 uppercase tracking-widest mb-2">[ Operational Track Record ]</div>
                     <h2 class="text-3xl font-bold uppercase tracking-tight">Team Expertise</h2>
                 </div>
                 <div class="lg:col-span-8 text-base text-slate-700 space-y-6 leading-relaxed">
@@ -191,4 +211,40 @@
                         </div>
                     </div>
                     <div>
-                        <label for="scope" class="block text-xs font-mono
+                        <label for="scope" class="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-2">Operational Classification</label>
+                        <select id="scope" name="scope" class="w-full px-4 py-3 border border-mono-border rounded-none bg-mono-stark focus:outline-none focus:border-mono-pitch transition-all text-sm text-slate-600">
+                            <option>PMS / AIF Structural Setup</option>
+                            <option>Stock Broker Compliance Management</option>
+                            <option>IA / RA Licensing Frameworks</option>
+                            <option>General Capital Markets Advisory</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-xs font-mono uppercase tracking-wider text-slate-600 mb-2">Inquiry Specifics</label>
+                        <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border border-mono-border rounded-none focus:outline-none focus:border-mono-pitch transition-all text-sm placeholder-slate-300" placeholder="Please cite specific SEBI regulations or project objectives..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-mono-pitch hover:bg-mono-darkGray text-mono-stark font-bold py-4 px-6 text-xs uppercase tracking-widest transition-colors">
+                        Submit Brief
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-mono-pitch text-slate-400 py-12 border-t border-mono-darkGray text-xs font-mono">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <p>&copy; 2026 Regex Consultancy. Capital Markets Regulatory Advisory.</p>
+                <p class="text-slate-600 text-[10px] mt-1">Disclaimer: Content is strictly informational and must not be interpreted as actionable legal or regulatory declarations.</p>
+            </div>
+            
+            <div class="flex space-x-6 text-xs uppercase tracking-wider font-bold">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-mono-stark hover:text-slate-400 transition-colors">LinkedIn</a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-mono-stark hover:text-slate-400 transition-colors">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
