@@ -1,113 +1,357 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const footerElement = document.getElementById('shared-footer');
-    if (footerElement) {
-        // Enforce new deep regulatory colors and typography overrides across all pages
-        footerElement.className = "bg-[#05070B] text-[#C9D1D9] py-16 border-t border-zinc-900 text-xs font-sans relative overflow-hidden";
-        
-        footerElement.innerHTML = `
-            <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Consultation | Regex Consultancy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="footer.js" defer></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mono: {
+                            pitch: '#000000',
+                            stark: '#ffffff',
+                            darkGray: '#121212',
+                            lightGray: '#f8f8f8',
+                            border: '#e4e4e7',
+                            muted: '#71717a'
+                        },
+                        accent: {
+                            gold: '#C8A45D'
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Session validation & Interactive Form State Management
+        document.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem('regulatoryDisclaimerAccepted') !== 'true') {
+                window.location.href = 'index.html';
+            }
+
+            const form = document.getElementById('consultation-form');
+            const inputs = form.querySelectorAll('input, select, textarea');
+            const progressFill = document.getElementById('form-progress-fill');
+            const successState = document.getElementById('form-success-state');
+            const initialFormState = document.getElementById('initial-form-state');
+
+            // Calculate current fields interaction metrics for Progress Strip
+            function updateProgress() {
+                let filled = 0;
+                const requiredFields = form.querySelectorAll('[required]');
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-12 border-b border-zinc-900">
-                    
-                    <div class="lg:col-span-4 space-y-6">
-                        <div>
-                            <span class="text-[#C8A45D] font-black text-base tracking-tighter uppercase block">Regex Consultancy</span>
-                            <p class="text-zinc-500 font-mono text-[10px] uppercase tracking-wider mt-1 leading-relaxed">
-                                Strategic Regulatory Advisory<br>for Capital Market Institutions
-                            </p>
-                        </div>
+                // Track checked check-boxes as a collection
+                const checkBoxes = form.querySelectorAll('input[type="checkbox"]');
+                let anyCheckSelected = Array.from(checkBoxes).some(cb => cb.checked) ? 1 : 0;
 
-                        <div class="space-y-3 pt-2">
-                            <span class="text-[#C8A45D] font-bold uppercase tracking-wider text-[11px] block">Regulatory Intelligence Updates</span>
-                            <p class="text-zinc-500 text-[11px] leading-relaxed">Receive important capital market regulatory developments.</p>
-                            <form action="#" method="POST" class="flex max-w-sm mt-2" onsubmit="event.preventDefault();">
-                                <input type="email" placeholder="Email Address" required class="bg-[#121620] border border-zinc-800 text-white text-xs px-3 py-2 w-full focus:outline-none focus:border-[#C8A45D] transition-colors rounded-none">
-                                <button type="submit" class="bg-white hover:bg-[#C8A45D] text-black font-bold uppercase tracking-wider text-[10px] px-4 py-2 transition-colors duration-300 rounded-none">Subscribe</button>
-                            </form>
-                        </div>
-                    </div>
+                requiredFields.forEach(field => {
+                    if (field.value.trim() !== "" && field.type !== 'checkbox') filled++;
+                });
 
-                    <div class="lg:col-span-2 space-y-3">
-                        <span class="text-[#C8A45D] font-bold uppercase tracking-wider text-[11px] block">Expertise</span>
-                        <ul class="space-y-2 text-zinc-400">
-                            <li><a href="practice-areas.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">PMS & AIF Structuring</a></li>
-                            <li><a href="practice-areas.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Licensing Advisory</a></li>
-                            <li><a href="practice-areas.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Compliance Reviews</a></li>
-                            <li><a href="practice-areas.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Governance Design</a></li>
-                            <li><a href="practice-areas.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Regulatory Audits</a></li>
-                        </ul>
-                    </div>
+                let totalMetrics = requiredFields.length + 1; // standard fields + checkbox group tracking
+                let finalScore = filled + anyCheckSelected;
+                let percent = Math.min(Math.round((finalScore / totalMetrics) * 100), 100);
+                
+                progressFill.style.width = `${percent}%`;
+            }
 
-                    <div class="lg:col-span-2 space-y-3">
-                        <span class="text-[#C8A45D] font-bold uppercase tracking-wider text-[11px] block">Who We Advise</span>
-                        <ul class="space-y-2 text-zinc-400">
-                            <li><a href="index.html#who-we-advise" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Portfolio Managers</a></li>
-                            <li><a href="index.html#who-we-advise" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Alternative Investment Funds</a></li>
-                            <li><a href="index.html#who-we-advise" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Research Analysts</a></li>
-                            <li><a href="index.html#who-we-advise" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Investment Advisers</a></li>
-                            <li><a href="index.html#who-we-advise" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Brokerages</a></li>
-                            <li><a href="index.html#who-we-advise" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">FinTech Firms</a></li>
-                        </ul>
-                    </div>
+            inputs.forEach(input => {
+                input.addEventListener('input', updateProgress);
+                input.addEventListener('change', updateProgress);
+            });
 
-                    <div class="lg:col-span-2 space-y-4">
-                        <div>
-                            <span class="text-[#C8A45D] font-bold uppercase tracking-wider text-[11px] block mb-3">Insights</span>
-                            <ul class="space-y-2 text-zinc-400">
-                                <li><a href="insights.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Regulatory Alerts</a></li>
-                                <li><a href="insights.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Industry Commentary</a></li>
-                                <li><a href="insights.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Governance Notes</a></li>
-                                <li><a href="insights.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Knowledge Center</a></li>
-                            </ul>
-                        </div>
-                        
-                        <div class="border border-zinc-800 p-3 bg-[#0a0e17]/60">
-                            <span class="text-[#C8A45D] font-mono text-[9px] uppercase tracking-widest block mb-1">Latest Insight</span>
-                            <a href="insights.html" class="font-bold text-[11px] text-[#C9D1D9] hover:text-[#C8A45D] transition-colors leading-snug block group">
-                                SEBI Clarifies Operational Requirements for PMS Structures 
-                                <span class="text-[#C8A45D] group-hover:translate-x-1 inline-block transition-transform ml-0.5">→</span>
-                            </a>
-                        </div>
-                    </div>
+            // Handle client brief submission override animation
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                initialFormState.classList.add('hidden');
+                successState.classList.remove('hidden');
+                successState.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        });
+    </script>
+    <style>
+        .nav-underline::after {
+            content: ''; display: block; width: 0; height: 1px; background: #C8A45D;
+            transition: width .3s ease;
+        }
+        .nav-underline:hover::after { width: 100%; }
+        
+        /* Floating Focus Line Effect */
+        .form-field-group { position: relative; }
+        .focus-line {
+            position: absolute; bottom: 0; left: 0; width: 0; height: 1px;
+            background-color: #C8A45D; transition: width 0.4s ease;
+        }
+        input:focus ~ .focus-line, textarea:focus ~ .focus-line { width: 100%; }
+    </style>
+</head>
+<body class="bg-mono-stark text-mono-pitch font-sans antialiased">
 
-                    <div class="lg:col-span-2 space-y-3">
-                        <span class="text-[#C8A45D] font-bold uppercase tracking-wider text-[11px] block">Contact</span>
-                        <ul class="space-y-2.5 text-zinc-400 font-medium">
-                            <li><a href="contact.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200 block">Mumbai Office</a></li>
-                            <li><a href="contact.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200 block">Ahmedabad Office</a></li>
-                            <li><a href="mailto:regex@regexconsultancy.com" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200 block underline decoration-zinc-800">Email Desk</a></li>
-                            <li><a href="https://www.linkedin.com/company/regex-consultancy-com/" target="_blank" rel="noopener noreferrer" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200 block">LinkedIn Profile</a></li>
-                            <li><a href="https://x.com/regex_consult" target="_blank" rel="noopener noreferrer" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200 block">X / Twitter Feed</a></li>
-                        </ul>
-                    </div>
-
-                </div>
-
-                <div class="pt-8 space-y-6">
-                    
-                    <div class="text-center font-mono text-[10px] tracking-[0.2em] text-zinc-600 uppercase">
-                        <span class="text-[#C8A45D]">SEBI</span> • 
-                        <span class="text-[#C8A45D]">PMS</span> • 
-                        <span class="text-[#C8A45D]">AIF</span> • 
-                        <span class="text-[#C8A45D]">IA</span> • 
-                        <span class="text-[#C8A45D]">RA</span> • 
-                        AML • GOVERNANCE
-                    </div>
-
-                    <div class="bg-[#0a0e17]/40 border border-zinc-900/60 p-4 max-w-4xl mx-auto text-center">
-                        <span class="text-[#C8A45D] font-mono text-[10px] uppercase tracking-wider block mb-1">Regulatory Disclaimer</span>
-                        <p class="text-[11px] text-zinc-500 leading-relaxed max-w-2xl mx-auto">
-                            Content published by Regex Consultancy is informational and should not be considered legal or regulatory advice. Readers are encouraged to verify changing statutory circular mandates directly against public records before taking structural action.
-                        </p>
-                    </div>
-
-                    <div class="text-center text-zinc-600 font-mono text-[10px] pt-2">
-                        &copy; 2026 Regex Consultancy. All rights reserved.
-                    </div>
-
-                </div>
-
+    <nav class="bg-mono-pitch text-mono-stark border-b border-mono-darkGray sticky top-0 z-50 h-14 flex items-center shadow-md">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="logo.png" alt="Logo" class="h-6 w-auto filter invert">
+                <span class="font-black text-base tracking-tighter uppercase group-hover:text-accent-gold transition-colors">Regex Consultancy</span>
+            </a>
+            <div class="hidden md:flex space-x-6 font-medium text-[11px] uppercase tracking-widest items-center">
+                <a href="practice-areas.html" class="text-mono-muted hover:text-mono-stark nav-underline py-1 transition-colors">Expertise</a>
+                <a href="index.html#who-we-advise" class="text-mono-muted hover:text-mono-stark nav-underline py-1 transition-colors">Who We Advise</a>
+                <a href="insights.html" class="text-mono-muted hover:text-mono-stark nav-underline py-1 transition-colors">Insights</a>
+                <a href="insights.html" class="text-mono-muted hover:text-mono-stark nav-underline py-1 transition-colors">Knowledge Center</a>
+                <a href="team.html" class="text-mono-muted hover:text-mono-stark nav-underline py-1 transition-colors">Team</a>
+                <a href="contact.html" class="text-accent-gold border-b border-accent-gold pb-0.5">Contact</a>
             </div>
-        `;
-    }
-});
+        </div>
+    </nav>
+
+    <header class="bg-mono-pitch text-mono-stark py-24 border-b border-mono-darkGray">
+        <div class="max-w-4xl mx-auto px-6 text-center space-y-6 animate-fade-in-up">
+            <div class="text-accent-gold font-mono text-xs uppercase tracking-widest">[ Strategic Intake Desk ]</div>
+            <h1 class="text-3xl sm:text-[54px] font-light tracking-tight uppercase leading-tight">
+                Request an <br><span class="font-bold text-mono-stark">Advisory Consultation</span>
+            </h1>
+            <p class="text-sm sm:text-base text-mono-muted leading-loose max-w-md mx-auto">
+                Discuss regulatory, licensing, governance or compliance matters with our advisory team.
+            </p>
+        </div>
+    </header>
+
+    <section class="py-24 max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start border-b border-mono-border">
+        
+        <div class="lg:col-span-7 bg-mono-stark border border-mono-pitch p-8 sm:p-12 relative">
+            
+            <div class="absolute top-0 left-0 right-0 h-1 bg-mono-lightGray">
+                <div id="form-progress-fill" class="h-full bg-accent-gold w-0 transition-all duration-500"></div>
+            </div>
+
+            <div id="form-success-state" class="hidden text-center py-16 space-y-6 animate-fade-in-up">
+                <div class="w-16 h-16 border-2 border-accent-gold rounded-full flex items-center justify-center mx-auto">
+                    <span class="text-accent-gold text-2xl font-bold">✓</span>
+                </div>
+                <h3 class="text-xl font-bold uppercase tracking-tight">Brief Transmitted Successfully</h3>
+                <p class="text-xs text-mono-muted leading-relaxed max-w-sm mx-auto">Our capital markets desk has logged your parameters. A managing advisor will complete background conflict checks and reach out within one business day.</p>
+                <a href="index.html" class="inline-block border border-mono-pitch px-6 py-2 text-xs uppercase tracking-widest font-bold hover:bg-mono-lightGray">Return to Profile</a>
+            </div>
+
+            <div id="initial-form-state" class="space-y-8">
+                <div>
+                    <h2 class="text-xl font-bold uppercase tracking-tight mb-2">Consultation Brief</h2>
+                    <p class="text-xs text-mono-muted">Provide operational metrics below to optimize our preliminary response model.</p>
+                </div>
+
+                <form id="consultation-form" class="space-y-8">
+                    <div class="form-field-group border-b border-mono-border pb-2">
+                        <label for="fullname" class="block text-[10px] font-mono uppercase tracking-wider text-mono-muted mb-1">Full Name *</label>
+                        <input type="text" id="fullname" required class="w-full bg-transparent text-sm py-2 focus:outline-none text-mono-pitch">
+                        <div class="focus-line"></div>
+                    </div>
+
+                    <div class="border-b border-mono-border pb-2">
+                        <label for="entitytype" class="block text-[10px] font-mono uppercase tracking-wider text-mono-muted mb-2">Entity Type *</label>
+                        <select id="entitytype" required class="w-full bg-mono-stark text-sm py-2 focus:outline-none focus:text-accent-gold text-mono-pitch font-medium cursor-pointer">
+                            <option value="">Select Category Matrix...</option>
+                            <option>Portfolio Manager</option>
+                            <option>Alternative Investment Fund</option>
+                            <option>Investment Adviser</option>
+                            <option>Research Analyst</option>
+                            <option>Broker</option>
+                            <option>FinTech</option>
+                            <option>Family Office</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-[10px] font-mono uppercase tracking-wider text-mono-muted mb-3">Advisory Requirement (Select All Applicable) *</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-medium">
+                            <label class="flex items-center gap-3 cursor-pointer p-2 border border-mono-lightGray hover:border-accent-gold transition-colors">
+                                <input type="checkbox" name="req" value="Registration" class="accent-[#C8A45D] h-4 w-4">
+                                <span>Registration</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer p-2 border border-mono-lightGray hover:border-accent-gold transition-colors">
+                                <input type="checkbox" name="req" value="Licensing" class="accent-[#C8A45D] h-4 w-4">
+                                <span>Licensing</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer p-2 border border-mono-lightGray hover:border-accent-gold transition-colors">
+                                <input type="checkbox" name="req" value="Compliance Review" class="accent-[#C8A45D] h-4 w-4">
+                                <span>Compliance Review</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer p-2 border border-mono-lightGray hover:border-accent-gold transition-colors">
+                                <input type="checkbox" name="req" value="Governance Framework" class="accent-[#C8A45D] h-4 w-4">
+                                <span>Governance Framework</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer p-2 border border-mono-lightGray hover:border-accent-gold transition-colors">
+                                <input type="checkbox" name="req" value="Audit Prep" class="accent-[#C8A45D] h-4 w-4">
+                                <span>Audit Preparation</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer p-2 border border-mono-lightGray hover:border-accent-gold transition-colors">
+                                <input type="checkbox" name="req" value="Regulatory Advisory" class="accent-[#C8A45D] h-4 w-4">
+                                <span>Regulatory Advisory</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="border-b border-mono-border pb-2">
+                        <label for="stage" class="block text-[10px] font-mono uppercase tracking-wider text-mono-muted mb-2">Project Stage *</label>
+                        <select id="stage" required class="w-full bg-mono-stark text-sm py-2 focus:outline-none focus:text-accent-gold text-mono-pitch font-medium cursor-pointer">
+                            <option value="">Select Phase...</option>
+                            <option>Exploring</option>
+                            <option>Planning</option>
+                            <option>Implementation</option>
+                            <option>Review</option>
+                            <option>Urgent Assistance</option>
+                        </select>
+                    </div>
+
+                    <div class="border-b border-mono-border pb-2">
+                        <label for="timeline" class="block text-[10px] font-mono uppercase tracking-wider text-mono-muted mb-2">Expected Engagement Timeline *</label>
+                        <select id="timeline" required class="w-full bg-mono-stark text-sm py-2 focus:outline-none focus:text-accent-gold text-mono-pitch font-medium cursor-pointer">
+                            <option value="">Select Horizon...</option>
+                            <option>Immediate</option>
+                            <option>Within 30 Days</option>
+                            <option>Within 90 Days</option>
+                            <option>Long-Term</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field-group border-b border-mono-border pb-2">
+                        <label for="overview" class="block text-[10px] font-mono uppercase tracking-wider text-mono-muted mb-1">Requirements Overview *</label>
+                        <textarea id="overview" required rows="3" placeholder="Please provide a brief overview of your requirements." class="w-full bg-transparent text-sm py-2 focus:outline-none text-mono-pitch placeholder-zinc-300"></textarea>
+                        <div class="focus-line"></div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-mono-pitch hover:bg-accent-gold text-mono-stark hover:text-mono-pitch font-bold py-4 text-xs uppercase tracking-widest transition-all duration-300">
+                        Schedule Advisory Discussion
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="lg:col-span-5 space-y-8 lg:sticky lg:top-24">
+            <div>
+                <span class="font-mono text-xs text-accent-gold uppercase tracking-widest block mb-1">[ Structural Integrity ]</span>
+                <h3 class="text-xl font-bold uppercase tracking-tight">Institutional Practice Standards</h3>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="p-6 border border-mono-border bg-mono-lightGray">
+                    <h4 class="font-bold text-xs uppercase tracking-wider text-mono-pitch mb-2">Regulatory Expertise</h4>
+                    <p class="text-xs text-mono-muted leading-loose">Specialized focus on capital market regulations and complex institutional operating frameworks.</p>
+                </div>
+                <div class="p-6 border border-mono-border bg-mono-lightGray">
+                    <h4 class="font-bold text-xs uppercase tracking-wider text-mono-pitch mb-2">Strategic Advisory</h4>
+                    <p class="text-xs text-mono-muted leading-loose">Practical, zero-overhead guidance calibrated to line up cleanly with both structural law and corporate targets.</p>
+                </div>
+                <div class="p-6 border border-mono-border bg-mono-lightGray">
+                    <h4 class="font-bold text-xs uppercase tracking-wider text-mono-pitch mb-2">Independent Perspective</h4>
+                    <p class="text-xs text-mono-muted leading-loose">Completely objective advisory mapped exclusively to your entity footprint. No distribution conflicts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 max-w-7xl mx-auto px-6 lg:px-8 border-b border-mono-border">
+        <div class="mb-16 border-l-2 border-accent-gold pl-6">
+            <span class="font-mono text-xs text-mono-muted uppercase tracking-widest block mb-1">[ Core Mandate Compendium ]</span>
+            <h2 class="text-2xl font-bold uppercase tracking-tight">Areas We Commonly Advise On</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 font-mono text-xs uppercase tracking-wider">
+            <div class="p-4 border border-mono-border bg-mono-lightGray hover:border-accent-gold transition-colors duration-300">■ PMS & AIF Structuring</div>
+            <div class="p-4 border border-mono-border bg-mono-lightGray hover:border-accent-gold transition-colors duration-300">■ Intermediary Licensing</div>
+            <div class="p-4 border border-mono-border bg-mono-lightGray hover:border-accent-gold transition-colors duration-300">■ Governance Reviews</div>
+            <div class="p-4 border border-mono-border bg-mono-lightGray hover:border-accent-gold transition-colors duration-300">■ Compliance Architecture</div>
+            <div class="p-4 border border-mono-border bg-mono-lightGray hover:border-accent-gold transition-colors duration-300">■ Operational Framework Design</div>
+            <div class="p-4 border border-mono-border bg-mono-lightGray hover:border-accent-gold transition-colors duration-300">■ Regulatory Audits</div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-mono-lightGray border-b border-mono-border">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <span class="font-mono text-[10px] uppercase text-accent-gold block mb-1">Primary Desk</span>
+                <h3 class="text-lg font-bold uppercase">Mumbai</h3>
+                <p class="text-xs text-mono-muted mt-2 leading-relaxed">Capital Markets Advisory Hub<br>Maharashtra, India</p>
+            </div>
+            <div>
+                <span class="font-mono text-[10px] uppercase text-accent-gold block mb-1">Regional Desk</span>
+                <h3 class="text-lg font-bold uppercase">Ahmedabad</h3>
+                <p class="text-xs text-mono-muted mt-2 leading-relaxed">Regulatory & Compliance Desk<br>Gujarat, India</p>
+            </div>
+            <div class="border-t md:border-t-0 md:border-l border-mono-border pt-6 md:pt-0 md:pl-8 space-y-4">
+                <div>
+                    <span class="font-mono text-[10px] uppercase text-mono-muted block">Direct Channels</span>
+                    <div class="text-xs font-bold space-y-1 mt-2">
+                        <a href="mailto:regex@regexconsultancy.com" class="block hover:text-accent-gold transition-colors">regex@regexconsultancy.com</a>
+                        <a href="https://www.linkedin.com/company/regex-consultancy-com/" target="_blank" class="block hover:text-accent-gold transition-colors">LinkedIn Profile</a>
+                    </div>
+                </div>
+                <div class="bg-mono-stark border border-mono-border p-3 inline-block">
+                    <span class="font-mono text-[9px] text-accent-gold uppercase tracking-widest block font-bold">Standard Turnaround</span>
+                    <p class="text-[11px] text-mono-pitch font-medium mt-0.5">Response Time: Within One Business Day</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 max-w-7xl mx-auto px-6 lg:px-8 border-b border-mono-border">
+        <div class="text-center mb-16">
+            <div class="font-mono text-xs text-accent-gold uppercase tracking-widest mb-1">[ Procedural Benchmarks ]</div>
+            <h2 class="text-2xl font-bold uppercase tracking-tight">The Engagement Process</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-8 relative text-center">
+            <div class="space-y-3">
+                <div class="w-8 h-8 bg-mono-pitch text-mono-stark font-mono text-xs font-bold flex items-center justify-center mx-auto rounded-none border border-accent-gold">1</div>
+                <h4 class="font-bold text-xs uppercase tracking-wider">Consultation Request</h4>
+                <p class="text-[11px] text-mono-muted leading-relaxed px-4">Submission of core structural requirements and entity taxonomy parameters.</p>
+            </div>
+            <div class="space-y-3">
+                <div class="w-8 h-8 bg-mono-pitch text-mono-stark font-mono text-xs font-bold flex items-center justify-center mx-auto rounded-none border border-accent-gold">2</div>
+                <h4 class="font-bold text-xs uppercase tracking-wider">Initial Assessment</h4>
+                <p class="text-[11px] text-mono-muted leading-relaxed px-4">Internal cross-checking against prevailing circular matrix benchmarks and compliance layers.</p>
+            </div>
+            <div class="space-y-3">
+                <div class="w-8 h-8 bg-mono-pitch text-mono-stark font-mono text-xs font-bold flex items-center justify-center mx-auto rounded-none border border-accent-gold">3</div>
+                <h4 class="font-bold text-xs uppercase tracking-wider">Scope Discussion</h4>
+                <p class="text-[11px] text-mono-muted leading-relaxed px-4">Calibrating physical deliverables, target alignment schedules, and resource dependencies.</p>
+            </div>
+            <div class="space-y-3">
+                <div class="w-8 h-8 bg-mono-pitch text-mono-stark font-mono text-xs font-bold flex items-center justify-center mx-auto rounded-none border border-accent-gold">4</div>
+                <h4 class="font-bold text-xs uppercase tracking-wider">Engagement Planning</h4>
+                <p class="text-[11px] text-mono-muted leading-relaxed px-4">Formal mobilization of technical resources and initialization of compliance architecture builds.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-mono-pitch text-mono-stark text-center">
+        <div class="max-w-xl mx-auto px-6 space-y-6">
+            <div class="font-mono text-xs text-accent-gold uppercase tracking-widest">[ Intelligence Stream ]</div>
+            <h2 class="text-2xl sm:text-3xl font-light uppercase tracking-tight">Stay Informed</h2>
+            <p class="text-xs text-mono-muted leading-loose max-w-sm mx-auto">
+                Subscribe for critical asset regulatory updates, internal governance insights and macro market developments.
+            </p>
+            <form class="flex max-w-md mx-auto pt-4" onsubmit="event.preventDefault(); alert('Subscription registered.');">
+                <input type="email" placeholder="Corporate Email Address" required class="bg-mono-darkGray border border-zinc-800 text-white text-xs px-4 py-3 w-full focus:outline-none focus:border-accent-gold transition-colors rounded-none">
+                <button type="submit" class="bg-mono-stark hover:bg-accent-gold text-mono-pitch font-bold uppercase tracking-wider text-[10px] px-6 transition-colors duration-300 rounded-none">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <footer id="shared-footer"></footer>
+
+</body>
+</html>
