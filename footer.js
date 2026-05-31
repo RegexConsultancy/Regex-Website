@@ -1,7 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => {
+function loadRegulatoryFooter() {
     const footerElement = document.getElementById('shared-footer');
     if (footerElement) {
-        footerElement.className = "bg-[#05070B] text-[#C9D1D9] py-16 border-t border-zinc-900 text-xs font-sans relative overflow-hidden";
+        // Enforce structural visibility and colors
+        footerElement.className = "bg-[#05070B] text-[#C9D1D9] py-16 border-t border-zinc-900 text-xs font-sans relative overflow-hidden block";
         
         footerElement.innerHTML = `
             <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -92,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="text-[#C8A45D]">RA</span> •
                         <span class="text-[#C8A45D]">AML</span> •
                         <span class="text-[#C8A45D]">GOVERNANCE</span> •
+                
                     </div>
 
                     <div class="bg-[#0a0e17]/40 border border-zinc-900/60 p-4 max-w-4xl mx-auto text-center">
@@ -110,4 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
     }
-});
+}
+
+// Bypasses browser lifecycle locks to force injection instantly
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadRegulatoryFooter);
+} else {
+    loadRegulatoryFooter();
+}
