@@ -91,7 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="text-[#C8A45D]">AIF</span> • 
                         <span class="text-[#C8A45D]">IA</span> • 
                         <span class="text-[#C8A45D]">RA</span> • 
-                        AML • GOVERNANCE
+                        <span class="text-[#C8A45D]">AML</span> • 
+                      <span class="text-[#C8A45D]">GOVERNANCE</span> • 
                     </div>
 
                     <div class="bg-[#0a0e17]/40 border border-zinc-900/60 p-4 max-w-4xl mx-auto text-center">
