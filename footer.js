@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const footerElement = document.getElementById('shared-footer');
     if (footerElement) {
-        // Enforce new deep regulatory colors and typography overrides across all pages
         footerElement.className = "bg-[#05070B] text-[#C9D1D9] py-16 border-t border-zinc-900 text-xs font-sans relative overflow-hidden";
         
         footerElement.innerHTML = `
@@ -30,11 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="lg:col-span-2 space-y-3">
                         <span class="text-[#C8A45D] font-bold uppercase tracking-wider text-[11px] block">Expertise</span>
                         <ul class="space-y-2 text-zinc-400">
-                            <li><a href="practice-areas.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">PMS & AIF Structuring</a></li>
-                            <li><a href="practice-areas.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Licensing Advisory</a></li>
-                            <li><a href="practice-areas.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Compliance Reviews</a></li>
-                            <li><a href="practice-areas.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Governance Design</a></li>
-                            <li><a href="practice-areas.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Regulatory Audits</a></li>
+                            <li><a href="expertise.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">PMS & AIF Structuring</a></li>
+                            <li><a href="expertise.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Licensing Advisory</a></li>
+                            <li><a href="expertise.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Compliance Reviews</a></li>
+                            <li><a href="expertise.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Governance Design</a></li>
+                            <li><a href="expertise.html" class="hover:text-[#C8A45D] text-[#C8A45D] transition-colors duration-200">Regulatory Audits</a></li>
                         </ul>
                     </div>
 
@@ -91,8 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="text-[#C8A45D]">AIF</span> • 
                         <span class="text-[#C8A45D]">IA</span> • 
                         <span class="text-[#C8A45D]">RA</span> • 
-                        <span class="text-[#C8A45D]">AML</span> • 
-                      <span class="text-[#C8A45D]">GOVERNANCE</span> • 
+                        AML • GOVERNANCE
                     </div>
 
                     <div class="bg-[#0a0e17]/40 border border-zinc-900/60 p-4 max-w-4xl mx-auto text-center">
