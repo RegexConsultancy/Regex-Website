@@ -89,10 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span class="text-[#C8A45D]">PMS</span> • 
                         <span class="text-[#C8A45D]">AIF</span> • 
                         <span class="text-[#C8A45D]">IA</span> • 
-                        <span class="text-[#C8A45D]">RA</span> • 
-                        AML • GOVERNANCE
+                        <span class="text-[#C8A45D]">RA</span> •
+                        <span class="text-[#C8A45D]">AML</span> •
+                        <span class="text-[#C8A45D]">GOVERNANCE</span> •
                     </div>
-
                     <div class="bg-[#0a0e17]/40 border border-zinc-900/60 p-4 max-w-4xl mx-auto text-center">
                         <span class="text-[#C8A45D] font-mono text-[10px] uppercase tracking-wider block mb-1">Regulatory Disclaimer</span>
                         <p class="text-[11px] text-zinc-500 leading-relaxed max-w-2xl mx-auto">
