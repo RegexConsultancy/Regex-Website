@@ -1,27 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practice Areas | Regex Consultancy</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Areas of Strategic Advisory | Regex Consultancy</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="footer.js" defer></script>
     <script>
-        tailwind.config = { theme: { extend: { colors: { mono: { pitch: '#000000', stark: '#ffffff', lightGray: '#f4f4f5', border: '#e4e4e7' } } } } }
-        document.addEventListener('DOMContentLoaded', () => { if (sessionStorage.getItem('regulatoryDisclaimerAccepted') !== 'true') window.location.href = 'index.html'; });
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mono: {
+                            pitch: '#000000',
+                            stark: '#ffffff',
+                            darkGray: '#121212',
+                            lightGray: '#f8f8f8',
+                            border: '#e4e4e7',
+                            muted: '#71717a'
+                        },
+                        accent: {
+                            gold: '#C8A45D'
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Enforce disclaimer lock check before rendering page details
+        document.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem('regulatoryDisclaimerAccepted') !== 'true') {
+                window.location.href = 'index.html';
+            }
+        });
     </script>
+    <style>
+        .nav-underline::after {
+            content: ''; display: block; width: 0; height: 1px; background: #C8A45D;
+            transition: width .3s ease;
+        }
+        .nav-underline:hover::after { width: 100%; }
+    </style>
 </head>
 <body class="bg-mono-stark text-mono-pitch font-sans antialiased">
-    <nav class="bg-mono-pitch text-mono-stark border-b border-mono-darkGray sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8"><div class="flex items-center justify-between h-20"><a href="index.html" class="font-black text-xl tracking-tighter uppercase">Regex Consultancy</a><div class="flex space-x-8 font-medium text-xs uppercase tracking-widest"><a href="practice-areas.html" class="text-mono-stark border-b border-mono-stark pb-1">Practice Areas</a><a href="team.html" class="text-slate-400 hover:text-mono-stark">Our Team</a><a href="insights.html" class="text-slate-400 hover:text-mono-stark">Regulatory Insights</a><a href="careers.html" class="text-slate-400 hover:text-mono-stark">Careers</a><a href="contact.html" class="text-slate-400 hover:text-mono-stark">Contact</a></div></div></div>
+
+    <nav class="bg-mono-pitch text-mono-stark border-b border-mono-darkGray sticky top-0 z-50 h-14 flex items-center shadow-md">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="logo.png" alt="Logo" class="h-6 w-auto filter invert">
+                <span class="font-black text-base tracking-tighter uppercase group-hover:text-accent-gold transition-colors">Regex Consultancy</span>
+            </a>
+            <div class="hidden md:flex space-x-6 font-medium text-[11px] uppercase tracking-widest items-center">
+                <a href="practice-areas.html" class="text-accent-gold border-b border-accent-gold pb-0.5">Expertise</a>
+                <a href="index.html#who-we-advise" class="text-mono-muted hover:text-mono-stark nav-underline py-1 transition-colors">Who We Advise</a>
+                <a href="insights.html" class="text-mono-muted hover:text-mono-stark nav-underline py-1 transition-colors">Insights</a>
+                <a href="insights.html" class="text-mono-muted hover:text-mono-stark nav-underline py-1 transition-colors">Knowledge Center</a>
+                <a href="team.html" class="text-mono-muted hover:text-mono-stark nav-underline py-1 transition-colors">Team</a>
+                <a href="contact.html" class="bg-mono-stark text-mono-pitch px-4 py-1 hover:bg-accent-gold hover:text-mono-pitch transition-all duration-300">Contact</a>
+            </div>
+        </div>
     </nav>
-    <main class="py-24 max-w-5xl mx-auto px-6">
-        <div class="border-l-2 border-mono-pitch pl-6 mb-16"><h1 class="text-4xl font-bold uppercase tracking-tight">Core Practice Areas</h1></div>
-        <div class="space-y-12">
-            <div class="p-8 border border-mono-border bg-mono-lightGray"><h2 class="text-2xl font-bold mb-3 uppercase">PMS & AIF Setup</h2><p class="text-slate-700 text-sm leading-relaxed">End-to-end framework assembly for Portfolio Management Services (PMS) and Alternative Investment Funds (Cat I, II, & III structures).</p></div>
-            <div class="p-8 border border-mono-border bg-mono-lightGray"><h2 class="text-2xl font-bold mb-3 uppercase">Intermediary Licensing</h2><p class="text-slate-700 text-sm leading-relaxed">Comprehensive tracking application matrix setups for corporate Investment Advisers (IA) and registered Research Analysts (RA).</p></div>
-            <div class="p-8 border border-mono-border bg-mono-lightGray"><h2 class="text-2xl font-bold mb-3 uppercase">Broker & Entity Compliance</h2><p class="text-slate-700 text-sm leading-relaxed">Oversight desks, strategic stress testing, mock inspection protocols, and circular compliance management for high-volume Stock Brokers.</p></div>
+
+    <header class="bg-mono-pitch text-mono-stark py-24 border-b border-mono-darkGray">
+        <div class="max-w-4xl mx-auto px-6 text-center space-y-6 animate-fade-in-up">
+            <div class="text-accent-gold font-mono text-xs uppercase tracking-widest">[ Core Competence Matrix ]</div>
+            <h1 class="text-3xl sm:text-[54px] font-light tracking-tight uppercase leading-tight">
+                Areas of <br><span class="font-bold text-mono-stark">Strategic Advisory</span>
+            </h1>
+            <p class="text-sm sm:text-base text-mono-muted leading-loose max-w-2xl mx-auto">
+                We assist regulated entities, investment platforms and market participants in designing regulatory structures, strengthening governance frameworks and navigating evolving compliance obligations.
+            </p>
+        </div>
+    </header>
+
+    <main class="py-24 max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+            
+            <div class="border border-mono-border bg-mono-stark p-8 flex flex-col justify-between hover:-translate-y-1 hover:shadow-xl hover:border-accent-gold transition-all duration-300 group">
+                <div>
+                    <div class="font-mono text-[10px] text-accent-gold uppercase tracking-widest mb-4 border-b border-mono-border pb-2">[ Objective 01 ]</div>
+                    <h3 class="font-bold uppercase text-lg mb-3 tracking-tight group-hover:text-accent-gold transition-colors">Launch & Registration</h3>
+                    <p class="text-xs text-mono-muted leading-loose mb-6">
+                        Supporting the complete establishment, structural mapping, and formal validation processing of regulated entities and specialized investment structures.
+                    </p>
+                </div>
+                <div>
+                    <div class="font-mono text-[9px] uppercase tracking-widest text-zinc-400 mb-2">Institutional Scope:</div>
+                    <div class="flex flex-wrap gap-2 text-[10px] font-mono uppercase tracking-wider text-mono-pitch font-medium">
+                        <span class="bg-mono-lightGray px-2 py-1">PMS</span>
+                        <span class="bg-mono-lightGray px-2 py-1">AIF</span>
+                        <span class="bg-mono-lightGray px-2 py-1">Investment Advisers</span>
+                        <span class="bg-mono-lightGray px-2 py-1">Research Analysts</span>
+                        <span class="bg-mono-lightGray px-2 py-1">Intermediaries</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border border-mono-border bg-mono-stark p-8 flex flex-col justify-between hover:-translate-y-1 hover:shadow-xl hover:border-accent-gold transition-all duration-300 group">
+                <div>
+                    <div class="font-mono text-[10px] text-accent-gold uppercase tracking-widest mb-4 border-b border-mono-border pb-2">[ Objective 02 ]</div>
+                    <h3 class="font-bold uppercase text-lg mb-3 tracking-tight group-hover:text-accent-gold transition-colors">Governance & Oversight</h3>
+                    <p class="text-xs text-mono-muted leading-loose mb-6">
+                        Designing high-level internal governance frameworks that completely support evolving regulatory expectations and bolster corporate operational resilience.
+                    </p>
+                </div>
+                <div>
+                    <div class="font-mono text-[9px] uppercase tracking-widest text-zinc-400 mb-2">Advisory Verticals:</div>
+                    <div class="flex flex-wrap gap-2 text-[10px] font-mono uppercase tracking-wider text-mono-pitch font-medium">
+                        <span class="bg-mono-lightGray px-2 py-1">Board Frameworks</span>
+                        <span class="bg-mono-lightGray px-2 py-1">Policies</span>
+                        <span class="bg-mono-lightGray px-2 py-1">Internal Controls</span>
+                        <span class="bg-mono-lightGray px-2 py-1">Delegation Structures</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border border-mono-border bg-mono-stark p-8 flex flex-col justify-between hover:-translate-y-1 hover:shadow-xl hover:border-accent-gold transition-all duration-300 group">
+                <div>
+                    <div class="font-mono text-[10px] text-accent-gold uppercase tracking-widest mb-4 border-b border-mono-border pb-2">[ Objective 03 ]</div>
+                    <h3 class="font-bold uppercase text-lg mb-3 tracking-tight group-hover:text-accent-gold transition-colors">Compliance Architecture</h3>
+                    <p class="text-xs text-mono-muted leading-loose mb-6">
+                        Building highly scalable, technical compliance tracking environments aligned precisely with strict statutory guidelines and circular mandates.
+                    </p>
+                </div>
+                <div>
+                    <div class="font-mono text-[9px] uppercase tracking-widest text-zinc-400 mb-2">Systems Engineered:</div>
+                    <div class="flex flex-wrap gap-2 text-[10px] font-mono uppercase tracking-wider text-mono-pitch font-medium">
+                        <span class="bg-mono-lightGray px-2 py-1">Compliance Manuals</span>
+                        <span class="bg-mono-lightGray px-2 py-1">Monitoring Systems</span>
+                        <span class="bg-mono-lightGray px-2 py-1">Reporting Frameworks</span>
+                        <span class="bg-mono-lightGray px-2 py-1">Risk Registers</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border border-mono-border bg-mono-stark p-8 flex flex-col justify-between hover:-translate-y-1 hover:shadow-xl hover:border-accent-gold transition-all duration-300 group">
+                <div>
+                    <div class="font-mono text-[10px] text-accent-gold uppercase tracking-widest mb-4 border-b border-mono-border pb-2">[ Objective 04 ]</div>
+                    <h3 class="font-bold uppercase text-lg mb-3 tracking-tight group-hover:text-accent-gold transition-colors">Regulatory Reviews</h3>
+                    <p class="text-xs text-mono-muted leading-loose mb-6">
+                        Executing completely independent operational assessments of entity regulatory readiness, stress limits, and overall compliance track effectiveness.
+                    </p>
+                </div>
+                <div>
+                    <div class="font-mono text-[9px] uppercase tracking-widest text-zinc-400 mb-2">Review Formats:</div>
+                    <div class="flex flex-wrap gap-2 text-[10px] font-mono uppercase tracking-wider text-mono-pitch font-medium">
+                        <span class="bg-mono-lightGray px-2 py-1">Gap Assessments</span>
+                        <span class="bg-mono-lightGray px-2 py-1">Mock Audits</span>
+                        <span class="bg-mono-lightGray px-2 py-1">Governance Reviews</span>
+                        <span class="bg-mono-lightGray px-2 py-1">Health Checks</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border border-mono-border bg-mono-stark p-8 flex flex-col justify-between hover:-translate-y-1 hover:shadow-xl hover:border-accent-gold transition-all duration-300 group">
+                <div>
+                    <div class="font-mono text-[10px] text-accent-gold uppercase tracking-widest mb-4 border-b border-mono-border pb-2">[ Objective 05 ]</div>
+                    <h3 class="font-bold uppercase text-lg mb-3 tracking-tight group-hover:text-accent-gold transition-colors">Business Expansion</h3>
+                    <p class="text-xs text-mono-muted leading-loose mb-6">
+                        Providing rigorous strategic advisory support for evaluating new product rollouts, entry into cross-border markets, and adapting to modern financial models.
+                    </p>
+                </div>
+                <div>
+                    <div class="font-mono text-[9px] uppercase tracking-widest text-zinc-400 mb-2">Expansion Vectors:</div>
+                    <div class="flex flex-wrap gap-2 text-[10px] font-mono uppercase tracking-wider text-mono-pitch font-medium">
+                        <span class="bg-mono-lightGray px-2 py-1">Product Structuring</span>
+                        <span class="bg-mono-lightGray px-2 py-1">Regulatory Mapping</span>
+                        <span class="bg-mono-lightGray px-2 py-1">Expansion Strategy</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border border-mono-border bg-mono-stark p-8 flex flex-col justify-between hover:-translate-y-1 hover:shadow-xl hover:border-accent-gold transition-all duration-300 group">
+                <div>
+                    <div class="font-mono text-[10px] text-accent-gold uppercase tracking-widest mb-4 border-b border-mono-border pb-2">[ Objective 06 ]</div>
+                    <h3 class="font-bold uppercase text-lg mb-3 tracking-tight group-hover:text-accent-gold transition-colors">Ongoing Advisory</h3>
+                    <p class="text-xs text-mono-muted leading-loose mb-6">
+                        Delivering clear, continuous strategic guidance on real-time regulatory shifts, master circular updates, and long-term operational impact bounds.
+                    </p>
+                </div>
+                <div>
+                    <div class="font-mono text-[9px] uppercase tracking-widest text-zinc-400 mb-2">Continuous Support:</div>
+                    <div class="flex flex-wrap gap-2 text-[10px] font-mono uppercase tracking-wider text-mono-pitch font-medium">
+                        <span class="bg-mono-lightGray px-2 py-1">Interpretation</span>
+                        <span class="bg-mono-lightGray px-2 py-1">Implementation</span>
+                        <span class="bg-mono-lightGray px-2 py-1">Stakeholder Guidance</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
-    <footer id="shared-footer" class="bg-mono-pitch text-slate-400 py-12 border-t border-mono-darkGray text-xs font-mono"></footer>
+
+    <section class="bg-mono-lightGray py-20 text-center border-t border-b border-mono-border">
+        <div class="max-w-2xl mx-auto px-6 space-y-6">
+            <h3 class="text-xl font-bold uppercase tracking-tight">Need Structural Calibration?</h3>
+            <p class="text-xs text-mono-muted leading-loose max-w-md mx-auto">Our advisory team performs exhaustive conflict parameter checks before onboarding initial entity mandates.</p>
+            <a href="contact.html" class="inline-block bg-mono-pitch hover:bg-accent-gold text-mono-stark hover:text-mono-pitch font-bold py-3 px-8 text-xs uppercase tracking-widest transition-all duration-300 shadow-md">Begin Advisory Session</a>
+        </div>
+    </section>
+
+    <footer id="shared-footer"></footer>
+
 </body>
 </html>
